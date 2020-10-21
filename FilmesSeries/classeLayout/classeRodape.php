@@ -4,6 +4,7 @@
 
         function exibe(){
             echo '
+				<script>var usuario_global = '.@$_SESSION["usuario"]["id_usuario"].';</script>
                 <script src="js/popper.min.js"></script>
                 <script src="js/jquery-3.2.1.min.js"></script>
                 <script src="js/bootstrap.min.js"></script>

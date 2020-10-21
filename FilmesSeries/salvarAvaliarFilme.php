@@ -13,9 +13,8 @@
 		$titulo = $_POST["titulo"];
 		$nota = $_POST["nota"];
 		$descricao = $_POST["descricao"];
-		$spoiler = $_POST["spoiler"];
 
-		$insert = "INSERT INTO avaliacao_filme(cod_usuario,cod_filme,titulo,nota,descricao,spoiler) VALUES ('$cod_usuario','$cod_filme','$titulo','$nota','$descricao','$spoiler')";
+		$insert = "INSERT INTO avaliacao_filme(cod_usuario,cod_filme,titulo,nota,descricao) VALUES ('$cod_usuario','$cod_filme','$titulo','$nota','$descricao')";
 
 		$conexao->query($insert);
 

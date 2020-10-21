@@ -9,15 +9,17 @@
 	header("Content-Type: application/json");
 
 	include "conexao.php";
-	$id_avaliacao_filme = $_POST["id"];
-	$nome = $_POST["nome"];
-	$nota = $_POST["nota"];
-	$titulo = $_POST["titulo"];
-	$descricao = $_POST["descricao"];
-	$spoiler = $_POST["spoiler"];
+		$cod_filme = $_POST["cod_filme"];
+		$cod_usuario = $_SESSION["usuario"]["id_usuario"];
+		$titulo = $_POST["titulo"];
+		$nota = $_POST["nota"];
+		$descricao = $_POST["descricao"];
+		$spoiler = $_POST["spoiler"];
 
-	$update = "UPDATE avaliacao_filme SET nome='$nome', nota='$nota', titulo='$titulo', descricao='$descricao', spoiler='$spoiler' WHERE id_avaliacao_filme='$id_avaliacao_filme'";
-
+	
+	
+		$update = "UPDATE avaliacao_filme SET nome='$nome', nota='$nota', titulo='$titulo', descricao='$descricao', spoiler='$spoiler' WHERE id_avaliacao_filme='$id_avaliacao_filme'";
+	}
 	$conexao->query($update);
 
 	$select = "SELECT * FROM avaliacao_filme ORDER BY nome";

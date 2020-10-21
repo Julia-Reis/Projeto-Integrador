@@ -38,7 +38,8 @@ $p["divRow"][3] = '
 			<option>Ação</option>
 			<option>Comédia</option>
 			<option>Comédia romântica</option>
-			<option>Dramma</option>
+			<option>Drama</option>
+			<option>Fantasia</option>
 			<option>Ficção científica</option>
 			<option>Religioso</option>
 			<option>Romance</option>

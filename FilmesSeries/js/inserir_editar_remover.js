@@ -7,7 +7,6 @@ $(function(){
 
      
         $(".remover").click(function(){
-            
             i = $(this).val();
             t = $(this).attr("name");
 
@@ -16,7 +15,7 @@ $(function(){
             
 
             $.post("remover.php",p,function(r){
-                
+                console.log(r);
                 if(r=='1'){
                     $("#tr"+i).remove();
                 }
@@ -52,22 +51,22 @@ $(function(){
         tabela = $("form[name='f']").attr("value");
 		
 		if(tabela=="Usuario"){
-			nome = $("input[name='nome']").val();
+			nome = $("input[name='nome_cadastro']").val();
             email = $("#email_cadastro").val();
-			var senha = $.md5($("#senha_cadastro").val());          			
-            p = {
-                    nome:nome, 
-                    email:email,
-					senha:senha
-                };    
-		}else if(tabela=="Lancamento"){
-			tipo = $("input[name='tipo']").val();
+			var senha = $.md5($("#senha_cadastro").val());
 			
+            var p = new FormData();
+				p.append('nome',nome);
+				p.append('email',email); 
+				p.append('senha',senha);
+				
+		}else if(tabela=="Lancamento"){
+			tipo = $("input[name='tipo']:checked").val();
 			imagem_filme = $("input[name='imagem_filme']")[0].files[0];
             nome_filme = $("input[name='nome_filme']").val();
             data_filme = $("input[name='data_filme']").val();            
 			duracao_filme = $("input[name='duracao_filme']").val();
-			genero_filme = $("input[name='genero_filme']").val();
+			genero_filme = $("select[name='genero_filme']").val();
 			classificacao_filme = $("select[name='classificacao_filme']").val();
 			sinopse_filme = $("textarea[name='sinopse_filme']").val();
 			
@@ -108,7 +107,7 @@ $(function(){
 			nome = $("input[name='nome']").val();
 			ano = $("input[name='ano']").val();
 			duracao = $("input[name='duracao']").val();
-			genero = $("input[name='genero']").val();
+			genero = $("select[name='genero']").val();
 			classificacao = $("select[name='classificacao']").val();
 			sinopse = $("textarea[name='sinopse']").val();
 			foto = $("input[name='foto']")[0].files[0];
@@ -152,29 +151,33 @@ $(function(){
 			titulo= $("input[name='titulo']").val();
 			descricao = $("textarea[name='descricao']").val();
 			spoiler = $("input[name='spoiler']").val();
-				p = {
-					cod_filme:cod_filme,
-					nota:nota,
-					titulo:titulo,
-					descricao:descricao,
-					spoiler:spoiler,
-					id:id
-				}
+
+				var p = new FormData();
+
+				//append vem de anexar
+				p.append('cod_filme',cod_filme);
+				p.append('nota',nota);
+				p.append('titulo',titulo);
+				p.append('descricao',descricao);
+				p.append('spoiler',spoiler);		
+				p.append('id',id);
+				
 		}else if(tabela=="AvaliarSerie"){
-			nome = $("input[name='nome']").val();
+			cod_serie = $("select[name='cod_serie']").val();
+			temporada = $("input[name='temporada']").val();
 			nota = $("input[name='nota']").val();
 			titulo= $("input[name='titulo']").val();
-			descricao = $("input[name='descricao']").val();
-			spoiler = $("input[name='spoiler']").val();
-				p = {
-					nome:nome,
-					temporada:temporada,
-					nota:nota,
-					titulo:titulo,
-					descricao:descricao,
-					spoiler:spoiler,
-					id:id
-				}
+			descricao = $("textarea[name='descricao']").val();
+
+				var p = new FormData();
+
+				//append vem de anexar
+				p.append('cod_serie',cod_serie);
+				p.append('temporada',temporada);
+				p.append('nota',nota);
+				p.append('titulo',titulo);
+				p.append('descricao',descricao);	
+				p.append('id',id);
 		}
 		console.log(acao+tabela);
         // $.post(acao+tabela+".php",p,function(r){
@@ -256,10 +259,10 @@ $(function(){
 						 tbody+="<td>"+ v.usuario + "</td>";
 						tbody+="<td>"+ v.foto + "</td>";
                         tbody+="<td>"+ v.nome + "</td>";
+						tbody+="<td>"+ v.temporada + "</td>";
 						tbody+="<td>"+ v.nota + "</td>";
 						tbody+="<td>" + v.titulo + "</td>";
 						tbody+="<td>" + v.descricao + "</td>";
-						tbody+="<td>" + v.spoiler + "</td>";
                         tbody+="<td><button class='alterar' type='button' value='"+v.id_avaliacao_serie+"' name='serie' data-toggle='modal' data-target='#novo"+tabela+"'>";
                         tbody+="<i class='material-icons text-warning'>create</i>";
                         tbody+="</button>";
@@ -278,14 +281,19 @@ $(function(){
 						tbody+="<td>"+ v.nota + "</td>";
 						tbody+="<td>" + v.titulo + "</td>";
 						tbody+="<td>" + v.descricao + "</td>";
-						tbody+="<td>" + v.spoiler + "</td>";
-                        tbody+="<td><button class='alterar' type='button' value='"+v.id_avaliacao_filme+"' name='filme' data-toggle='modal' data-target='#novo"+tabela+"'>";
+                        tbody+="<td>";
+						if(v.id_usuario == usuario_global){
+							
+						
+						tbody+="<button class='alterar' type='button' value='"+v.id_avaliacao_filme+"' name='filme' data-toggle='modal' data-target='#novo"+tabela+"'>";
                         tbody+="<i class='material-icons text-warning'>create</i>";
                         tbody+="</button>";
 
                         tbody+="<button class='remover' type='button' value='"+v.id_avaliacao_filme+"' name='filme'>";
                         tbody+="<i class='material-icons text-danger'>delete</i>";
-                        tbody+="</button></td>";
+                        tbody+="</button>";
+						}
+						tbody+="</td>";
                         tbody+="</tr>";
                     }
 				  }
@@ -311,16 +319,16 @@ $(function(){
 					$("input[name='nome']").val();
 					$("input[name='ano']").val();
 					$("input[name='duracao']").val();
-					$("input[name='genero']").val();
-					$("input[name='classificacao']").val();
+					$("select[name='genero']").val();
+					$("select[name='classificacao']").val();
 					$("input[name='sinopse']").val();
 				}
 				
 				if(tabela=="Serie"){
 					$("input[name='nome']").val();
 					$("input[name='ano']").val();
-					$("input[name='genero']").val();
-					$("input[name='classificacao']").val();
+					$("select[name='genero']").val();
+					$("select[name='classificacao']").val();
 					$("input[name='temporada']").val();
 					$("input[name='sinopse']").val();
 				}
@@ -335,7 +343,7 @@ $(function(){
 				
 				if(tabela=="AvaliarSerie"){
 					$("input[name='nome']").val();
-					$("input[name='temporada']").val();
+					$("select[name='temporada']").val();
 					$("input[name='nota']").val();
 					$("input[name='titulo']").val();
 					$("input[name='descricao']").val();

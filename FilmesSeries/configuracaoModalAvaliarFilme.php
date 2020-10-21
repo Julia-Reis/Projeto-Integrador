@@ -45,15 +45,6 @@ $p["divRow"][3] = '
 		<label>Descrição</label>
 		<textarea name="descricao" class="form-control" placeholder="O que você achou?"></textarea>
 	</div>
+</div>
 ';
-
-// BOTÃO CONTEM SPOILER
-$p["divRow"][4] = '
-	<div class="form-group">
-		<div class="custom-control custom-switch">
-			<input type="checkbox" class="custom-control-input" name="spoiler" id="spoiler">
-			<label class="custom-control-label" for="spoiler">Contem spoiler ?</label>
-		</div>
-	</div>
-</div>';
 ?>

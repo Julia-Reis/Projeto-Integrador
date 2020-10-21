@@ -11,11 +11,11 @@
 	$senha = $_POST["senha"];
 	$permissao = 2;
 
-	$insert = "INSERT INTO usuario(nome,email,senha,permissao) VALUES ('$nome','$email', '$senha', '$permissao')";
+	$insert = "INSERT INTO usuario(nome,email,senha,permissao) VALUES ('$nome','$email','$senha', '$permissao')";
 
 	$conexao->query($insert);
 	
-	$select = "SELECT id_usuario, email, permissao FROM usuario
+	$select = "SELECT id_usuario, nome, email, permissao FROM usuario
                 WHERE email=:email AND senha=:senha";
     
     $stmt = $conexao->prepare($select);
@@ -25,7 +25,6 @@
 
     $stmt->execute();
 
-        session_start();
         $linha = $stmt->fetch();
         $_SESSION["usuario"]=$linha; 
         

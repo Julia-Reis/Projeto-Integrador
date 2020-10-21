@@ -1,7 +1,0 @@
-EXPLICAÇÃO DO PROJETO
-
-O tema do meu projeto é de um sistema para que usuários avaliem filmes e séries, 
-e também vejam os próximos lançamentos.
-
-O sistema 
-

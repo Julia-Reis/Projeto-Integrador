@@ -6,6 +6,6 @@
     $usuario = "root";
     $senha = "usbw";
 
-    $conexao = new PDO("$sgbd:host=$local;dbname=$nome_bd",$usuario,$senha);
+    $conexao = new PDO("$sgbd:host=$local;dbname=$nome_bd;charset=utf8",$usuario,$senha);
 
 ?>

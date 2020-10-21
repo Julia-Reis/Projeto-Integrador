@@ -7,7 +7,17 @@
 	include "conexao.php";
 
 	header("Content-Type: application/json");
-
+	
+	$nome_arquivo = @date("Ymdhis").$_FILES["foto"]["name"];
+	$local = "img/img_upload/".$nome_arquivo;
+	// tira o arquivo da pasta temporaria  para a pasta definitiva
+	if(move_uploaded_file($_FILES["foto"]["tmp_name"], $local)){
+		$upload = true;
+	}
+	else{
+		$upload = false;
+	}
+	$foto = "<img src=\"img/img_upload/$nome_arquivo\" class=\"imagem\"/>";
 	$nome = $_POST["nome"];
 	$ano = $_POST["ano"];
 	$genero = $_POST["genero"];
@@ -15,7 +25,7 @@
 	$classificacao = $_POST["classificacao"];
 	$temporada = $_POST["temporada"];
 
-	$insert = "INSERT INTO serie(nome,ano,genero,sinopse,classificacao,temporada) VALUES ('$nome','$ano','$genero','$sinopse', '$classificacao', '$temporada')";
+	$insert = "INSERT INTO serie(foto,nome,ano,genero,sinopse,classificacao,temporada) VALUES ('$foto','$nome','$ano','$genero','$sinopse', '$classificacao', '$temporada')";
 
 	$conexao->query($insert);
 

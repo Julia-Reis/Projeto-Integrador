@@ -9,7 +9,7 @@ $p["divRow"][0] = '
 				<img id="foto_login" src="img/logo.png">
 				<legend id="legenda">Cadastro de Serie</legend>
 				  <div class="custom-file">
-					  <input type="file" class="custom-file-input" id="" lang="pt-BR">
+					  <input type="file" class="custom-file-input" name="foto" id="foto" lang="pt-BR">
 					  <label class="custom-file-label">Imagem da Serie</label>
 				  </div>
 ';
@@ -39,7 +39,8 @@ $p["divRow"][3] = '
 			<option>Ação</option>
 			<option>Comédia</option>
 			<option>Comédia romântica</option>
-			<option>Dramma</option>
+			<option>Drama</option>
+			<option>Fantasia</option>
 			<option>Ficção científica</option>
 			<option>Religioso</option>
 			<option>Romance</option>

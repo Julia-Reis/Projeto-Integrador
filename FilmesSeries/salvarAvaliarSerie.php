@@ -14,9 +14,8 @@
 		$titulo = $_POST["titulo"];
 		$nota = $_POST["nota"];
 		$descricao = $_POST["descricao"];
-		$spoiler = $_POST["spoiler"];
 
-		$insert = "INSERT INTO avaliacao_serie(cod_serie,cod_usuario,titulo,nota,descricao,spoiler) VALUES ('$cod_serie', '$cod_usuario', '$titulo','$nota','$temporada', '$descricao','$spoiler')";
+		$insert = "INSERT INTO avaliacao_serie(cod_serie,cod_usuario,titulo,nota,descricao) VALUES ('$cod_serie','$cod_usuario', '$titulo','$nota','$temporada', '$descricao')";
 
 		$conexao->query($insert);
 

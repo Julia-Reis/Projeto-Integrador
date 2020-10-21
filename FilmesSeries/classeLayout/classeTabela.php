@@ -53,10 +53,15 @@
                     } // SÓ PODEM EDITAR OU REMOVER SE FOR UM USUÁRIO OU O ADMIM
                      if(($_SESSION["usuario"]["permissao"]=="1" && (basename($_SERVER['PHP_SELF'],'.php')=="filmes" 
 					  || basename($_SERVER['PHP_SELF'],'.php')=="series" || basename($_SERVER['PHP_SELF'],'.php')=="lancamentos")) || 
-						 $_SESSION["usuario"]["permissao"]=="2" && (basename($_SERVER['PHP_SELF'],'.php')=="avaliarFilme"
+						 $_SESSION["usuario"]["permissao"]=="2" &&(basename($_SERVER['PHP_SELF'],'.php')=="avaliarFilme"
 					  || basename($_SERVER['PHP_SELF'],'.php')=="avaliarSerie")){
                     echo '
-                        <td>
+                        <td>';
+						if($_SESSION["usuario"]["permissao"] == '1' || ($_SESSION["usuario"]["permissao"] == '2' 
+						&& $_SESSION["usuario"]["id_usuario"]== $linha["id_usuario"])){
+							
+						
+						echo'
                             <button class="alterar" type="button" value="'.$linha[0].'" name="'.$this->nome.'"
                                 data-toggle="modal" data-target="#novo'.ucfirst($this->nome).'">
                                 <i class="material-icons text-warning">create</i>
@@ -64,7 +69,11 @@
 
                             <button class="remover" type="button" value="'.$linha[0].'" name="'.$this->nome.'">
                             <i class="material-icons text-danger">delete</i>
-                            </button>
+                            </button>';
+						}else{
+								echo $_SESSION["usuario"]["id_usuario"]. "-" .$linha[0];
+						}	
+						echo'	
                         </td>';
                     }  
                         

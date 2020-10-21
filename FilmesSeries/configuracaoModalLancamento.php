@@ -8,7 +8,7 @@ $p["divRow"][0] = '
 	<div class="card-body">
 	
 		<img id="foto_login" src="img/logo.png">
-			<legend>Cadastro de Filme</legend>
+			<legend>Cadastro de Lançamentos</legend>
 			<div class="custom-control custom-radio">
 			  <input type="radio" value="f" name="tipo" class="custom-control-input" id="f">
 			  <label class="custom-control-label" for="f">Filme</label>
@@ -54,6 +54,7 @@ $p["divRow"][4] = '
 			<option>Comédia</option>
 			<option>Comédia romântica</option>
 			<option>Drama</option>
+			<option>Fantasia</option>
 			<option>Ficção científica</option>
 			<option>Religioso</option>
 			<option>Romance</option>
@@ -130,6 +131,7 @@ $p["divRow"][11] = '
 			<option>Comédia</option>
 			<option>Comédia romântica</option>
 			<option>Drama</option>
+			<option>Fantasia</option>
 			<option>Ficção científica</option>
 			<option>Religioso</option>
 			<option>Romance</option>

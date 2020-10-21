@@ -1,6 +1,6 @@
 <?php
     $p = null;
-    $p["cabecalho"] = array("Imagem", "Usuario", "Serie", "Titulo", "Temporada", "Nota", "Descrição", "Spoiler");
+    $p["cabecalho"] = array("Usuario", "Imagem", "Serie", "Titulo", "Temporada", "Nota", "Descrição", "Spoiler");
 
     include "conexao.php";
 
@@ -11,5 +11,5 @@
     foreach($resultado as $linha){
         $p["dados"][]=$linha;
     }
-    $p["nome"] = "AvaliacaoSerie";
+    $p["nome"] = "Avaliacao_Serie";
 ?>

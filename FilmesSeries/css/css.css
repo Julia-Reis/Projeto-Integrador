@@ -16,7 +16,7 @@
 	transform: translate(-50%,-50%);
 	box-shadow: 1px 5px 30px rgb(195, 195, 195);
 	color:black;
-	background-image:url("http://localhost/Beluzo/FilmesSeries/img/img8.png");
+	background-image:url("http://localhost/Beluzo/FilmesSeries/img/img9.png");
 }
 
 #fundo{
@@ -38,10 +38,11 @@ nav{
 p, h3{
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 85%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+	background-color:white;
 }
 
 #tela{
